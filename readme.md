@@ -42,17 +42,17 @@ GET api/messages
 ```
 ### Get a Message
 ``` bash
-GET api/message/{id}
+GET api/messages/{id}
 ```
 
 ### Delete message
 ``` bash
-DELETE api/message/{id}
+DELETE api/messages/{id}
 ```
 
 ### Add Message
 ``` bash
-POST api/message
+POST api/messages
 subject
 content
 start_date
@@ -61,7 +61,7 @@ expiration_date
 
 ### Update message
 ``` bash
-PUT api/message/{message_id}
+PUT api/messages/{message_id}
 subject
 content
 start_date
