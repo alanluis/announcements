@@ -8,13 +8,16 @@
 # Install Dependencies
 composer install
 
+# Create a .env file and config the database settings
+cp .env.example .env
+
 # Run Migrations
 php artisan migrate
 
 # Execute Seeds
 php artisan db:seed
 
-# If encryption key error 
+# Generate encryption jey 
 php artisan key:generate
 
 # Js Dependences
@@ -22,6 +25,9 @@ npm install
 
 # Watch assets files
 npm run watch
+
+# Serve your application
+php artisan serve
 
 # Run Unit Tests
 # Edit phpunit.xml and change the ENV DB_DATABASE variable, I.e: <env name="DB_DATABASE" value="announcements_test"/>
