@@ -61,7 +61,7 @@ expiration_date
 
 ### Update message
 ``` bash
-POST api/message/{message_id}
+PUT api/message/{message_id}
 subject
 content
 start_date
