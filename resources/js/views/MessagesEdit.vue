@@ -25,8 +25,8 @@
             <label for="expiration_date">Expiration Date</label>
             <input type="date" class="form-control" id="expiration_date" v-model="message.expiration_date">
         </div>
-        <button type="submit" class="btn btn-primary mr-3">Submit</button>
-        <router-link :to="{ name: 'messages.list' }" class="btn btn-secondary">Back to Messages</router-link>
+        <button type="submit" class="btn btn-primary mr-3"><i class="fa fa-paper-plane" aria-hidden="true"></i> Submit</button>
+        <router-link :to="{ name: 'messages.list' }" class="btn btn-secondary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Messages</router-link>
         </form>
         
     </div>

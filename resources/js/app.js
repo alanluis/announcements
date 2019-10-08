@@ -34,7 +34,8 @@ const router = new VueRouter({
             path: '/editMessage',
             name: 'messages.edit',
             component: MessagesEdit,
-        }
+        },
+        { path: '*', redirect: '/' }
     ],
 });
 
