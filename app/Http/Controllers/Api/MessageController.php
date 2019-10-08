@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\MessageCollection as MessageResourceCollection;
 use App\Http\Resources\Message as MessageResource;
 use App\Message;
+use App\Http\Requests\MessageRequest;
 
 class MessageController extends Controller
 {
@@ -26,9 +27,9 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MessageRequest $request)
     {
-        return new MessageResource(Message::create($this->validateRequest($request)));
+        return new MessageResource(Message::create($request->validated()));
     }
 
     /**
@@ -49,9 +50,9 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Message $message)
+    public function update(MessageRequest $request, Message $message)
     {
-        $message->update($this->validateRequest($request));
+        $message->update($request->validated());
         return new MessageResource($message);
     }
 
@@ -64,14 +65,5 @@ class MessageController extends Controller
     public function destroy(Message $message)
     {
         $message->delete();
-    }
-
-    private function validateRequest($request) {
-        return $request->validate([
-            'subject' => 'required|max:255',
-            'content' => 'required',
-            'start_date' => 'date',
-            'expiration_date' => 'date'
-            ]);
     }
 }
