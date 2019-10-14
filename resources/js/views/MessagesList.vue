@@ -6,7 +6,7 @@
                 <router-link :to="{ name: 'messages.add' }" class="btn btn-primary"><i class="fa fa-plus"></i> New Message</router-link>
             </div>
         </div>
-        
+
         <div class="table-responsive-sm">
             <table class="table">
                 <thead>
@@ -75,7 +75,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">DELETE</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -123,10 +123,10 @@
                     const responseJson = await response.json();
                     this.messages = responseJson.data;
                     this.makePagination(responseJson.meta, responseJson.links);
-                    this.loaded = true;
                 } catch (error) {
                     console.log(error.message);
                 }
+                this.loaded = true;
             },
             makePagination(meta, links) {
                 let pagination = {
