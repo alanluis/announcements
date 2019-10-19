@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-6"><h1>Messages</h1></div>
             <div class="col-6 text-right align-self-center">
-                <router-link :to="{ name: 'messages.add' }" class="btn btn-primary"><i class="fa fa-plus"></i> New Message</router-link>
+                <router-link :to="{ name: 'messages.add' }" class="btn btn-primary"><i class="fa fa-plus"></i> Add</router-link>
             </div>
         </div>
 
