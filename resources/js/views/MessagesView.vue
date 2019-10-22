@@ -19,7 +19,7 @@
         </div>
 
         <div class="row mb-3">
-            <div class="col">
+            <div class="col d-flex flex-nowrap">
             <router-link :to="{ name: 'messages.list' }" class="btn btn-secondary mr-3"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Messages</router-link>
             <router-link :to="{ name: 'messages.edit', query: {id: message.id } }" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i> Edit Message</router-link>
             </div>
