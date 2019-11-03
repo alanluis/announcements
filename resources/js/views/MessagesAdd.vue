@@ -4,7 +4,7 @@
 
         <div v-if="validationErrors">
             <ul class="alert alert-danger">
-                <li v-for="(value, key, index) in validationErrors">{{ value }}</li>
+                <li v-for="(value, key) in validationErrors" v-bind:key="key">{{ value }}</li>
             </ul>
         </div>
 
@@ -37,27 +37,25 @@ export default {
   data() {
     return {
       message: {
-        'subject': '',
-        'content': '',
-        'start_date': '',
-        'expiration_date': ''
+        'subject': null,
+        'content': null,
+        'start_date': null,
+        'expiration_date': null
       },
       errors : ''
     };
   },
 
   methods: {
-    addMessage() {
-      let self = this;
-      axios.post('/api/messages', this.message)
-      .then(function(response){
-        self.$router.push({ name: "messages.list" });
-      })
-      .catch(error => {
+    async addMessage() {
+      try {
+        await axios.post('/api/messages', this.message)
+        this.$router.push({ name: "messages.list" })
+      } catch (error){
         if (error.response.status == 422){
-          this.errors = error.response.data.errors;
+            this.errors = error.response.data.errors;
         }
-      });
+      }
     }
   },
   computed: {
