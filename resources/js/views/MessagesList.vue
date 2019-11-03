@@ -8,7 +8,7 @@
         </div>
 
         <div class="table-responsive-sm">
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -22,7 +22,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="message in messages" v-bind:key="messages.id">
+                    <tr v-for="message in messages" v-bind:key="message.id">
                         <th scope="row">{{ message.id }}</th>
                         <td>
                             <router-link :to="{ name: 'messages.view', query: {id: message.id } }">{{ message.subject }}
@@ -44,8 +44,8 @@
                 </tbody>
             </table>
 
-            <div class="d-flex justify-content-center">
-                <div v-if="!loaded" class="spinner-border flex-center" role="status">
+            <div v-if="!loaded" class="d-flex justify-content-center">
+                <div class="spinner-border flex-center" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
             </div>
