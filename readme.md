@@ -17,7 +17,7 @@ php artisan migrate
 # Execute Seeds
 php artisan db:seed
 
-# Generate encryption jey 
+# Generate encryption key
 php artisan key:generate
 
 # Js Dependences
