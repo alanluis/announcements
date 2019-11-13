@@ -18,7 +18,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return new MessageResourceCollection(Message::orderBy('created_at', 'desc')->paginate(5)->setPath('/api/messages'));
+        return new MessageResourceCollection(Message::orderBy('created_at', 'desc')->paginate(5));
     }
 
     /**
