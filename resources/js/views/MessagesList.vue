@@ -118,7 +118,7 @@
             async fetchMessages(page_url) {
                 try {
                     this.loaded = false;
-                    page_url = page_url || '/api/messages';
+                    page_url = page_url || process.env.MIX_ANNOUNCEMENTS_API_URL + '/messages';
                     const response = await fetch(page_url, {headers: new Headers({'Accept': 'application/json'})});
                     const responseJson = await response.json();
                     this.messages = responseJson.data;
@@ -143,7 +143,7 @@
             },
             async deleteMessage() {
                 try {
-                    const response = await fetch(`api/messages/${this.message.id}`, {method: 'delete'});
+                    const response = await fetch(`${process.env.MIX_ANNOUNCEMENTS_API_URL}/messages/${this.message.id}`, {method: 'delete'});
                     this.fetchMessages();
                 } catch (error) {
                     console.log(error);

@@ -56,7 +56,7 @@ export default {
   methods: {
     fetchMessage() {
       let vm = this;
-      fetch('/api/messages/' + this.$route.query.id)
+      fetch(process.env.MIX_ANNOUNCEMENTS_API_URL + '/messages/' + this.$route.query.id)
         .then(res => res.json())
         .then(res => {
           this.message = res.data;

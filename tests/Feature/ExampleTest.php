@@ -15,7 +15,8 @@ class ExampleTest extends TestCase
      */
     public function a_message_can_be_added()
     {
-        $response = $this->json('POST', 'api/messages', $this->getMessageSampleData());
+        $this->withoutExceptionHandling();
+        $response = $this->json('POST', env('MIX_ANNOUNCEMENTS_API_URL') . '/messages', $this->getMessageSampleData());
         
         $this->assertEquals(201, $response->getStatusCode());
         $this->assertCount(1, Message::all());
@@ -26,15 +27,15 @@ class ExampleTest extends TestCase
      */
     public function messages_api_should_retrieve_json_format()
     {
-        $response1 = $this->post('api/messages', array_merge($this->getMessageSampleData(), ['subject'=>'content1']));
-        $response2 = $this->post('api/messages', array_merge($this->getMessageSampleData(), ['subject'=>'content2']));
+        $response1 = $this->post(env('MIX_ANNOUNCEMENTS_API_URL') . '/messages', array_merge($this->getMessageSampleData(), ['subject'=>'content1']));
+        $response2 = $this->post(env('MIX_ANNOUNCEMENTS_API_URL') . '/messages', array_merge($this->getMessageSampleData(), ['subject'=>'content2']));
         
         $this->assertEquals(201, $response1->getStatusCode());
         $this->assertEquals(201, $response2->getStatusCode());
 
         $this->assertCount(2, Message::all());
 
-        $response = $this->get('api/messages')
+        $response = $this->get(env('MIX_ANNOUNCEMENTS_API_URL') . '/messages')
             ->assertJsonCount(2, 'data')
             ->assertSee('"subject":"content1"')
             ->assertSee('"subject":"content2"');
@@ -47,7 +48,7 @@ class ExampleTest extends TestCase
     {
         $message = $this->getMessageSampleData();
         $message['subject'] = '';
-        $response = $this->json('POST', 'api/messages', $message);
+        $response = $this->json('POST', env('MIX_ANNOUNCEMENTS_API_URL') . '/messages', $message);
     
         $this->assertEquals(422, $response->getStatusCode());
         $response->assertJsonFragment(['message'=> 'The given data was invalid.']);
@@ -61,7 +62,7 @@ class ExampleTest extends TestCase
      */
     public function a_message_can_be_updated()
     {
-        $response = $this->json('POST', 'api/messages', $this->getMessageSampleData());
+        $response = $this->json('POST', env('MIX_ANNOUNCEMENTS_API_URL') . '/messages', $this->getMessageSampleData());
 
         $messageId = Message::first()->id;
         
@@ -72,7 +73,7 @@ class ExampleTest extends TestCase
             'expiration_date' => '2019-10-11'
         ];
 
-        $response = $this->put('api/messages/' . $messageId, $updatedMessage);
+        $response = $this->put(env('MIX_ANNOUNCEMENTS_API_URL') . '/messages/' . $messageId, $updatedMessage);
         
         $this->assertEquals(200, $response->getStatusCode());
 
@@ -87,11 +88,11 @@ class ExampleTest extends TestCase
      */
     public function a_message_can_be_deleted()
     {
-        $response = $this->post('api/messages', $this->getMessageSampleData());
+        $response = $this->post(env('MIX_ANNOUNCEMENTS_API_URL') . '/messages', $this->getMessageSampleData());
 
         $messageId = Message::first()->id;
 
-        $response = $this->delete('api/messages/' . $messageId);
+        $response = $this->delete(env('MIX_ANNOUNCEMENTS_API_URL') . '/messages/' . $messageId);
         
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertCount(0, Message::all());

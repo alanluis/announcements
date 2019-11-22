@@ -49,7 +49,7 @@ export default {
   methods: {
     async addMessage() {
       try {
-        await axios.post('/api/messages', this.message)
+        await axios.post(process.env.MIX_ANNOUNCEMENTS_API_URL + '/messages', this.message)
         this.$router.push({ name: "messages.list" })
       } catch (error){
         if (error.response.status == 422){

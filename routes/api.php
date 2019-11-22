@@ -21,4 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('messages', 'Api\MessageController');
+Route::prefix('v1')->group(function () {
+    Route::resource('messages', 'Api\MessageController');
+});

@@ -53,7 +53,7 @@ export default {
   methods: {
     fetchMessage() {
       let vm = this;
-      fetch('/api/messages/' + this.$route.query.id)
+      fetch(process.env.MIX_ANNOUNCEMENTS_API_URL + '/messages/' + this.$route.query.id)
         .then(res => res.json())
         .then(res => {
           this.message = res.data;
@@ -62,7 +62,7 @@ export default {
     },
     saveMessage() {
       let self = this;
-      axios.put('/api/messages/' + this.$route.query.id, this.message)
+      axios.put(process.env.MIX_ANNOUNCEMENTS_API_URL + '/messages/' + this.$route.query.id, this.message)
       .then(function(response) {
         self.$router.push({ name: "messages.list" });
       })
