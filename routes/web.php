@@ -11,4 +11,6 @@
 |
 */
 
+Route::view('/api/v1/doc{s?}', 'api.doc');
+
 Route::get('/{any}', 'SpaController@index')->where('any', '.*');
