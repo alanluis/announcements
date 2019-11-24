@@ -1,10 +1,14 @@
-# Announcements APP with API, MySQL and Vue.js
+# Announcements APP with REST API, MySQL and Vue.js
 
-> Laravel 6 Announcements API whit MySQL database, PHPUnitTests and a Vue.js frontend
+> Laravel 6 Announcements APP with REST API, MySQL database, PHP Unit Tests and a Vue.js frontend.
 
 ## Online Demo on HerokuApp with PostgreSQL
 
 https://announcementsapp.herokuapp.com/
+
+## Blueprint REST API documentation
+
+https://announcementsapp.herokuapp.com/api/v1/docs
 
 ## Quick Start / Installation
 
