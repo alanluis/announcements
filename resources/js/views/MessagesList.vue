@@ -59,6 +59,9 @@
 
         <nav aria-label="Page navigation">
             <ul class="pagination mt-3">
+                <li v-bind:class="[{disabled: pagination.current_page == 1}]" class="page-item"><a class="page-link"
+                        href="#" @click="fetchMessages()">First</a></li>
+
                 <li v-bind:class="[{disabled: !pagination.prev_page_url}]" class="page-item"><a class="page-link"
                         href="#" @click="fetchMessages(pagination.prev_page_url)">Previous</a></li>
 
@@ -67,6 +70,9 @@
 
                 <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><a class="page-link"
                         href="#" @click="fetchMessages(pagination.next_page_url)">Next</a></li>
+
+                <li v-bind:class="[{disabled: pagination.current_page == pagination.last_page}]" class="page-item"><a class="page-link"
+                        href="#" @click="fetchMessages(pagination.last_page_url)">Last</a></li>
             </ul>
         </nav>
 
@@ -133,7 +139,8 @@
                     current_page: meta.current_page,
                     last_page: meta.last_page,
                     next_page_url: links.next,
-                    prev_page_url: links.prev
+                    prev_page_url: links.prev,
+                    last_page_url: process.env.MIX_ANNOUNCEMENTS_API_URL + '/messages?page=' + meta.last_page,
                 };
 
                 this.pagination = pagination;
