@@ -59,7 +59,7 @@
 
         <nav aria-label="Page navigation">
             <ul class="pagination mt-3">
-                <li v-bind:class="[{disabled: pagination.current_page == 1}]" class="page-item"><a class="page-link"
+                <li v-bind:class="[{disabled: pagination.current_page == 1}]" class="page-item d-none d-sm-block"><a class="page-link"
                         href="#" @click="fetchMessages()">First</a></li>
 
                 <li v-bind:class="[{disabled: !pagination.prev_page_url}]" class="page-item"><a class="page-link"
@@ -71,7 +71,7 @@
                 <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><a class="page-link"
                         href="#" @click="fetchMessages(pagination.next_page_url)">Next</a></li>
 
-                <li v-bind:class="[{disabled: pagination.current_page == pagination.last_page}]" class="page-item"><a class="page-link"
+                <li v-bind:class="[{disabled: pagination.current_page == pagination.last_page}]" class="page-item d-none d-sm-block"><a class="page-link"
                         href="#" @click="fetchMessages(pagination.last_page_url)">Last</a></li>
             </ul>
         </nav>
